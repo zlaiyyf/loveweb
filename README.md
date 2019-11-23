@@ -8,4 +8,4 @@
 
 祝各位程序猿找到自己的爱情，觉得好点一下star，谢谢
 
-<div align=center><img src="https://github.com/zlaiyyf/loveweb/blob/master/img/9.png" width="300" height="450" /></div>
+<div align=center><img src="https://github.com/zlaiyyf/loveweb/blob/master/img/9.png" /></div>
