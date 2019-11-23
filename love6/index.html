@@ -1,0 +1,170 @@
+
+<!---->
+<html>
+<head>
+<meta charset="gb2313">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2313" />
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<!--禁止缩放-->
+<meta name="author" content="某某某" />
+<meta name="copyright" content="Copyright (c) 2015-2020 某某某" />
+<meta name="description" content="某某某是我的小可爱" />
+<meta name="format-detection" content="telephone=no">
+<title>某某某是我的小可爱,么么哒!</title>
+
+<style type="text/css">
+body {
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+	font-size: 25px;
+	color: #FFF;
+	font-family: "微软雅黑";
+	background: #f3961c;
+}
+
+div {
+	text-align: left;
+}
+
+.tittle {
+	width: 100%;
+	background: #f3961c;
+	top: 0px;
+	height: 100%;
+	z-index: 0;
+	position: absolute;
+	position: fixed !important;
+	display: none;
+	cursor: default;
+}
+
+.big {
+	font-family: "微软雅黑";
+	color: #FFF;
+	font-size: 35px;
+}
+
+.tishi {
+	position: absolute;
+	position: fixed !important;
+	z-index: 99;
+	bottom: 10px;
+	width: 100%;
+	text-align: center;
+}
+
+.tishiContent {
+	border: 1px solid #FFF;
+	font-size: 18px;
+	padding: 5px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+</style>
+<script type="text/javascript"
+	src="jquery.min.js"></script>
+<script>
+if(localStorage["index"]=="1"){
+	window.location="#";
+	}
+$(document).ready(function(e) {
+	$(document).scrollTop(300); /*移动滚动条到最下方*/
+	timer=setInterval("$.change()",6000);
+	t=1;
+	$("#t-"+t).fadeIn();
+	
+	$(document).click(
+	function(){
+		/*如果用户点击了，就取消自动播放*/
+		clearInterval(timer);
+		$.change();
+		}
+	);
+	
+	 
+	
+	/*切换*/
+	$.change=function(){
+		t++;
+		if(t<=$(".tittle").length){
+		$(".tittle").slideUp(1500).fadeOut();
+		$("#t-"+t).slideDown(1500).fadeIn();
+		}else{
+			localStorage["index"]="1";
+			window.location="#";
+			}
+		}
+});
+</script>
+
+</head>
+
+<body>
+	<center>
+		<div class="tittle" id="t-1">
+			<table width="100%" border="0" height="100%">
+				<tr>
+					<td align="center"> <span class="big">某某某是我的小可爱,</span>吧唧吧唧么么哒!</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="tittle" id="t-2">
+			<table width="100%" border="0" height="100%">
+				<tr>
+					<td align="center"><span
+						class="big">经过多少风风雨雨</span>,我的身旁一直有你</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="tittle" id="t-3">
+			<table width="100%" border="0" height="100%">
+				<tr>
+					<td align="center">最大的愿望就想你每天开心<span class="big">,</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</center>
+
+	<div class="tittle" id="t-4">
+		<table width="100%" border="0" height="100%">
+			<tr>
+				<td align="center"><br>我要让你每天感到快乐<br>每天露出你那漂亮酒窝<br>和你一起分享甜美生活<span class="big"></span>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+<div class="tittle" id="t-5">
+		<table width="100%" border="0" height="100%">
+			<tr>
+				<td align="center"><br>别再担心害怕你会是我最美的新娘<span class="big">,</span>
+				</td>
+			</tr>
+		</table>
+	</div>
+	</center>
+	<div align="center" class="tishi">
+		<span class="tishiContent">某某某是我的小可爱</span>
+	</div>
+<audio autoplay="autopaly" loop="-1">
+					<source src="http://m.qqshe.com/18388694.mp3" type="audio/mp3" />
+			</audio>
+<!--浮动桃心-->
+<script src="jquery-1.7.1.min.js" language="javascript" type="text/javascript"></script>
+<script src="tao.js" language="javascript" type="text/javascript"></script>
+
+<div align="left" class="content"><span  id="txt"></span><span id="guang"></span>
+<span></span>
+</div>
+
+<div id="bubbles" style="visibility:hidden">
+<img src="img/1.png">
+<img src="img/2.png">
+</div>
+<!--完结,By:Err-->
+</body>
+</html>

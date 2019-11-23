@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>html5苹果触屏滑动接电话特效 - 站长素材</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+    <script type="text/javascript" src="js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="js/easeljs-0.7.1.min.js"></script>
+    <script type="text/javascript" src="js/tweenjs-0.5.1.min.js"></script>
+    <script type="text/javascript" src="js/movieclip-0.7.1.min.js"></script>
+    <script type="text/javascript" src="gif.js"></script>
+    <script type="text/javascript">
+        var canvas, stage, exportRoot;
+
+        function init() {
+            canvas = document.getElementById("canvas");
+            exportRoot = new lib.gif();
+
+            stage = new createjs.Stage(canvas);
+            stage.addChild(exportRoot);
+            stage.update();
+
+            createjs.Ticker.setFPS(lib.properties.fps);
+            createjs.Ticker.addEventListener("tick", stage);
+        }
+    </script>
+</head>
+<body onLoad="init();">
+<div class="holder">
+    <img src="img/share.jpg" style="position: absolute; top: 0;left: 0;opacity: 0;">
+
+    <!--page2-->
+    <div class="page1 abs">
+        <img class="abs p1_pic01" src="img/p1_pic01.png" />
+        <img class="abs p1_pic02" src="img/p1_pic02.png" />
+        <div class="abs p1_box" id="drag_box">
+            <canvas id="canvas" width="189" height="47"></canvas>
+            <img id="drag_bar" src="img/p1_bar.png" />
+        </div>
+    </div>
+
+    <!--page3-->
+    <div class="vid abs">
+        <img class="vidImg abs" src="music/p01.jpg" width="640" />
+        <video id="mid" src="music/m1.mp4"  width="640" height="1136" preload="preload" poster="music/p01.jpg" x-webkit-airplay="true"
+               webkit-playsinline="true" autoplay x5-video-player-type="h5">
+        </video>
+        <!--<div class="zaodian abs"></div>-->
+        <img class="stopVid abs on" src="img/stopVid.png" />
+        <img class="playVid abs" src="img/p1_bar.png" />
+    </div>
+
+    <!--过渡页-->
+    <div class="page2 abs">
+        <img class="abs gd_pic01" src="img/gd_pic01.png" />
+        <img class="abs gd_pic02" src="img/gd_pic02.png" />
+    </div>
+
+    <div class="page4" id="page4">
+        <!--//+++++++++++ page1 ++++++++++++++-->
+        <div class="page current" style='background-color: #6fc4ba'>
+                      
+        </div>
+    </div>
+
+
+</div>
+
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" src="js/Utils.js"></script>
+<script type="text/javascript" src="js/TweenMax.min.js"></script>
+<script type="text/javascript" src="js/Draggable.min.js"></script>
+<script type="text/javascript" src="js/cache-1.0.min.js"></script>
+<script type="text/javascript" src="js/video2.js"></script>
+
+<script>
+
+    function addWeiXinShare() {
+        $.ajax({
+            url:   'http://sc.chinaz.com',
+            type:   "GET",
+            dataType:   'jsonp',
+            data: {url:location.href,appID:"wxc699e1abc03d4836",appKey:"4241c2404cb89897f7f1a5652e19a7eb"},
+            success:   function (json)  { //客户端jquery预先定义好的callback函数,成功获取跨域服务器上的json数据后,会动态执行这个callback函数 
+                console.log(json);
+
+                wx.config({
+                    debug: false,
+                    appId: json.appId, //'<?php echo $signPackage["appId"];?>',
+                    timestamp: json.timestamp, //<?php echo $signPackage["timestamp"];?>,
+                    nonceStr: json.nonceStr, //'<?php echo $signPackage["nonceStr"];?>',
+                    signature: json.signature, //'<?php echo $signPackage["signature"];?>',
+                    jsApiList: [
+                        'checkJsApi',
+                        'onMenuShareTimeline',
+                        'onMenuShareAppMessage',
+                        'onMenuShareQQ'
+                    ]
+                });
+                window.shareData = {
+                    'title': '如此前任来电话了，你接吗？',
+                    'description': 'http://sc.chinaz.com',
+                    'url': 'index.html'/*tpa=http://milu.duocaitou.com/index.html*/,
+                    'picURL': 'img/share.jpg'/*tpa=http://milu.duocaitou.com/img/share.jpg*/
+                };
+                wx.ready(function() {
+                    wx.onMenuShareTimeline({
+                        title: window.shareData.title, // 分享标题
+                        link: window.shareData.url, // 分享链接
+                        imgUrl: window.shareData.picURL, // 分享图标
+                        success: function() {
+                            // 用户确认分享后执行的回调函数
+                            // setShareCount()
+                        },
+                        cancel: function() {
+                            // 用户取消分享后执行的回调函数
+                        }
+                    });
+
+                    wx.onMenuShareAppMessage({
+                        title: window.shareData.title, // 分享标题
+                        desc: window.shareData.description, // 分享描述
+                        link: window.shareData.url, // 分享链接
+                        imgUrl: window.shareData.picURL, // 分享图标
+                        type: '', // 分享类型,music、video或link，不填默认为link
+                        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                        success: function() {
+                            // 用户确认分享后执行的回调函数
+                            // setShareCount()
+                        },
+                        cancel: function() {
+                            // 用户取消分享后执行的回调函数
+                        },
+                        fail:function(){
+                        },
+                        trigger:function(){
+                        }
+                    });
+
+                    wx.onMenuShareQQ({
+                        title: window.shareData.title, // 分享标题
+                        desc: window.shareData.description, // 分享描述
+                        link: window.shareData.url, // 分享链接
+                        imgUrl: window.shareData.picURL, // 分享图标
+                        success: function() {
+                            // 用户确认分享后执行的回调函数
+                            // setShareCount()
+                        },
+                        cancel: function() {
+                            // 用户取消分享后执行的回调函数
+                        }
+                    });
+
+                    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+                });
+            }
+        });
+
+    }
+addWeiXinShare();
+</script>
+
+</body>
+</html>

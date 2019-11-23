@@ -1,0 +1,119 @@
+body, h2, p {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: url("../images/fm.jpg") no-repeat;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+	color: deeppink;
+	font-family: Helvetica, sans-serif;
+	text-align:center;
+}
+a{color:yellow;}
+#shineflip {
+	/*background: url("../images/cover.jpg") no-repeat;*/
+	-o-background-size: 100% 100%;	
+	-webkit-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	background-size: 100% 100%;
+	position: absolute;
+    margin:50px auto;
+}
+
+#shineflip-pages 
+{
+    /*background-color:#fafafa;*/
+    background-repeat: repeat;
+    position: absolute;
+    z-index: 2;
+}
+
+#shineflip-pages section.cover_front, #shineflip-pages section.cover_background{
+	position: absolute;
+	overflow: hidden;
+	color: #ffffff;
+}
+
+#shineflip-pages .cover_front_content
+{
+	position: absolute; 
+	z-index: 1;
+	overflow:hidden;
+	white-space:nowrap;
+	-ms-user-select:none;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+}
+
+#shineflip-pages .cover_front_back
+{
+	position: absolute; 
+	z-index: 0;
+}
+
+#shineflip-pages .cover_background_content
+{
+	position: absolute; 
+	z-index: 1;
+	overflow:hidden;
+	white-space:nowrap;
+	-ms-user-select:none;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+}
+
+#shineflip-pages .cover_background_back
+{
+	position: absolute; 
+	z-index: 0;
+}
+
+#shineflip-pages section.pageflip 
+{
+	display: block;
+	position: absolute;
+	overflow: hidden;
+}
+
+#shineflip-pages section.page {
+    //background-color: #fafafa;
+	display: block;
+	position: absolute;
+	overflow: hidden;
+}
+	#shineflip-pages-flipcontent,#shineflip-pages section>div {
+		display: block;
+		font-size: 12px;
+		position: absolute;
+		overflow: hidden;
+		width:100%;
+		height:100%;
+	}
+	#shineflip-pages-flipcontent,#shineflip-pages section>span {
+		display: block;
+		font-size: 12px;
+		position: absolute;
+		overflow: hidden;
+	}
+	#shineflip-pages-flipcontent p,
+	#shineflip-pages-flipcontent h2,
+	#shineflip-pages section p,
+	#shineflip-pages section h2 {
+		line-height: 1.4em;
+		text-align: justify;
+	}
+
+#shineflip-canvas {
+	position: absolute;
+	z-index: 0;
+}
+
+#shineflip-page-mid-canvas {
+	position: absolute;
+	pointer-events: none;
+	z-index: 0;
+}

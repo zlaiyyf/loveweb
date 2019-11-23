@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Our Love Story</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('digital-7_mono.ttf') format("truetype");
+		}
+	</style>
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/garden.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+	
+	<script type="text/javascript" src="js/jq.snow.js"></script>
+</head> 
+
+<body>
+<!--下面是调用方法和参数说明-->
+	<script>
+	$(function(){
+		$.fn.snow({ 
+			minSize: 5,		//雪花的最小尺寸
+			maxSize: 50, 	//雪花的最大尺寸
+			newOn: 150		//雪花出现的频率 这个数值越小雪花越多
+		});
+	});
+	</script>
+	<div id="mainDiv">
+		<div id="content">
+			<div id="code">
+				<span class="comments">/**</span><br />
+        <span class="space"/><span class="comments">* 小黑：</span><br />
+        <span class="space"/><span class="comments">* 我写这个网站来纪念我们在一起的日子 </span><br />
+        <span class="space"/><span class="comments">* 虽然，我不是一个很擅长表达言语的人。 </span><br />
+        <span class="space"/><span class="comments">* 但我希望我们能记住我们在一起的每一刻。</span><br />
+				<span class="space"/><span class="comments">*/</span><br />
+				Girl u = <span class="keyword">new</span> Girl(<span class="string">"姚怡帆"</span>);<br/>
+				Boy i = <span class="keyword">new</span> Boy(<span class="string">"赵亮"</span>);<br />
+				<span class="comments">// 首先祝小黑每天快乐。</span><br />
+				<span class="comments">// 我可爱的小公主。</span><br />
+        <span class="comments">// 今天突然想到我们在一起已经这么久了。</span><br />
+				<span class="comments">// 此处省略一万字的暧昧！！</span><br />
+				<span class="comments">//大学生活 </span><br />
+        <span class="comments">// 对我来说是个重要的时刻，是我们第一次约会！ </span><br />
+				<span class="comments">// 每次想到我感觉我是多么的幸运遇到你。 </span><br />
+        <span class="comments">//  </span><br />
+				我爱你;<br />
+				<span class="comments">//当我感受到我剧烈的心跳，我明白了：</span><br />
+				我想你;<br />
+				<span class="comments">// 你在我心中最美。 </span><br />
+				我想照顾你 <br />
+				<span class="comments">// 你是我今生的唯一！</span><br />
+				<span class="comments">// 所以我继续爱你，我有信心，你也会一直陪我。</span><br />
+				<span class="keyword">我会</span> 永远  <span class="keyword">爱你</span>;<br />
+				<span class="keyword">一直</span> 爱你 <br />
+				<span class="placeholder"/>我有一颗永远不变的心<br />
+				<span class="placeholder"/><span class="comments">// 往后余生。</span><br />
+				<span class="placeholder"/><span class="comments">// 心底温柔是你。</span><br />
+				<span class="placeholder"/>爱你 = 想你<br /><br />
+				我非常高兴能认识你<br />
+			</div>
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+				<div id="words">
+					<div id="messages">
+						        小黑,我们已经相爱了：
+						<div id="elapseClock"></div>
+					</div>
+					<div id="loveu">
+						<div class="signature">--赵亮</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="copyright">
+			 <a href='http://www.codejie.net'>zl@yyf</a> &nbsp;2019
+		</div>
+	</div>
+	<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var together = new Date();
+		together.setFullYear(2018, 04, -32);
+		together.setHours(00);
+		together.setMinutes(0);
+		together.setSeconds(0);
+		together.setMilliseconds(0);
+		
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			document.body.appendChild(msg);
+			$("#code").css("display", "none")
+			$("#copyright").css("position", "absolute");
+			$("#copyright").css("bottom", "10px");
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				startHeartAnimation();
+			}, 5000);
+
+			timeElapse(together);
+			setInterval(function () {
+				timeElapse(together);
+			}, 500);
+
+			adjustCodePosition();
+			$("#code").typewriter();
+		}
+	</script>
+	<embed src="http://sisiyan.sinaapp.com/Love.mp3" autostart="true" loop="true" hidden="true"></embed>
+</body>
+</html>
